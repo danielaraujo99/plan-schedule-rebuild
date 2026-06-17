@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import heroNails from "@/assets/hero-nails.jpg.asset.json";
+import heroNails from "@/assets/hero-nails.jpg";
 import { GoldButton } from "@/components/booking/GoldButton";
 
 export const Route = createFileRoute("/")({
@@ -58,8 +58,11 @@ function Index() {
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-border">
           <img
-            src={heroNails.url}
+            src={heroNails}
             alt="Manicure delicada feita no Maison Élan Beauty"
+            width={900}
+            height={1200}
+            fetchPriority="high"
             className="aspect-[3/4] w-full object-cover"
           />
         </div>
@@ -122,8 +125,11 @@ function Index() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)]">
               <img
-                src={heroNails.url}
+                src={heroNails}
                 alt="Manicure delicada feita no Maison Élan Beauty"
+                width={960}
+                height={1280}
+                fetchPriority="high"
                 className="h-full max-h-[640px] w-full object-cover"
               />
             </div>
