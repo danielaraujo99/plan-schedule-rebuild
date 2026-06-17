@@ -2,13 +2,15 @@
 
 Este projeto é TanStack Start (SSR) e suporta deploy direto na Vercel via Nitro preset `vercel` (Build Output API v3).
 
+## Como funciona
+
+O `vite.config.ts` define `nitro: { preset: "vercel" }`, que instrui o Nitro a gerar o output no formato nativo da Vercel (`.vercel/output/`). Isso acontece automaticamente durante o build — não é preciso configurar `outputDirectory` manualmente.
+
 ## Passo a passo
 
 1. Importe o repositório em https://vercel.com/new
 2. Em **Framework Preset** selecione **Other** (não Vite). O `vercel.json` já cuida do resto.
-3. Não altere Build Command nem Output Directory — `vercel.json` define:
-   - Build: `vite build` com `NITRO_PRESET=vercel`
-   - Output: `.vercel/output` (Build Output API, detectado automaticamente)
+3. Não altere Build Command nem Output Directory.
 4. Configure as variáveis de ambiente que o app usa em **Settings → Environment Variables**.
 5. Deploy.
 
