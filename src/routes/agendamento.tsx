@@ -8,7 +8,7 @@ import { MonthCalendar } from "@/components/booking/MonthCalendar";
 import { TimeSlotGrid } from "@/components/booking/TimeSlotGrid";
 import { GoldButton } from "@/components/booking/GoldButton";
 import { SummaryCard } from "@/components/booking/SummaryCard";
-import { SERVICES, WHATSAPP_NUMBER, formatPreco } from "@/lib/services";
+import { SERVICES, WHATSAPP_NUMBER, formatPreco, formatDuracao } from "@/lib/services";
 
 export const Route = createFileRoute("/agendamento")({
   head: () => ({
