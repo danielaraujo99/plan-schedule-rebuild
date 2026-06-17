@@ -8,7 +8,7 @@ import { MonthCalendar } from "@/components/booking/MonthCalendar";
 import { TimeSlotGrid } from "@/components/booking/TimeSlotGrid";
 import { GoldButton } from "@/components/booking/GoldButton";
 import { SummaryCard } from "@/components/booking/SummaryCard";
-import { SERVICES, WHATSAPP_NUMBER, formatPreco } from "@/lib/services";
+import { SERVICES, WHATSAPP_NUMBER, formatPreco, formatDuracao } from "@/lib/services";
 
 export const Route = createFileRoute("/agendamento")({
   head: () => ({
@@ -58,27 +58,24 @@ function Agendamento() {
 
   const confirmar = () => {
     if (!service || !data || !horario) return;
+    const horaFormatada = horario.replace(":", "h") + "0";
     const linhas = [
-      "✨ *MAISON ÉLAN BEAUTY*",
-      "_Nova solicitação de agendamento_",
+      "Olá! Acabei de fazer meu agendamento pelo site da Maison Élan.",
       "",
-      "━━━━━━━━━━━━━━━",
-      "💅 *Serviço*",
-      `   ${service.nome}`,
+      "Segue o resumo:",
       "",
-      "📅 *Data & Horário*",
-      `   ${dataBR} às ${horario}`,
+      `*Serviço:* ${service.nome}`,
+      `*Data:* ${dataBR}`,
+      `*Horário:* ${horaFormatada}`,
+      `*Duração:* ${formatDuracao(service.duracaoMin)}`,
+      `*Valor:* ${formatPreco(service.preco)}`,
       "",
-      "💎 *Valor*",
-      `   ${formatPreco(service.preco)}`,
-      "━━━━━━━━━━━━━━━",
+      `*Nome:* ${nome}`,
+      `*WhatsApp:* ${whats}`,
+      insta ? `*Instagram:* ${insta}` : "",
       "",
-      "👤 *Cliente*",
-      `   ${nome}`,
-      `   📱 ${whats}`,
-      insta ? `   📷 ${insta}` : "",
-      "",
-      "_Aguardo a confirmação, por favor 💛_",
+      "Aguardo a confirmação, por favor.",
+      "Obrigada!",
     ].filter(Boolean).join("\n");
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(linhas)}`;
     window.open(url, "_blank");
