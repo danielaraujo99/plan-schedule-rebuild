@@ -114,12 +114,8 @@ function Index() {
               </div>
             </div>
 
-            <div className="mt-12 flex items-center gap-8 border-t border-border pt-6 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-              <span>Manicure</span>
-              <span className="text-gold/60">·</span>
-              <span>Alongamento</span>
-              <span className="text-gold/60">·</span>
-              <span>Spa dos pés</span>
+            <div className="mt-12 flex items-center border-t border-border pt-6 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+              <span>Nails, sobrancelhas e cuidados faciais</span>
             </div>
           </div>
 
