@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
 import { Logo } from "./Logo";
-import heroNails from "@/assets/hero-nails.jpg.asset.json";
+import heroNails from "@/assets/hero-nails.jpg";
 
 type Props = {
   children: ReactNode;
@@ -38,8 +38,11 @@ export function BookingShell({ children, onBack, showHeader = true }: Props) {
           {/* Brand panel */}
           <aside className="relative overflow-hidden rounded-2xl border border-border bg-card">
             <img
-              src={heroNails.url}
+              src={heroNails}
               alt="Manicure delicada Maison Élan"
+              width={960}
+              height={1280}
+              loading="lazy"
               className="absolute inset-0 h-full w-full object-cover opacity-70"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/55 to-background/90" />
