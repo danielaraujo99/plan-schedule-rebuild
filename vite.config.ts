@@ -1,7 +1,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  assetsInclude: ["**/*.zip"],
+  vite: {
+    assetsInclude: ["**/*.zip"],
+  },
   tanstackStart: {
     server: { entry: "server" },
   },
