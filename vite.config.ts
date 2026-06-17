@@ -8,8 +8,8 @@ export default defineConfig({
     preset: "cloudflare-module",
     output: {
       dir: "dist",
-      publicDir: "dist",
       serverDir: "dist/_server",
+      publicDir: "dist/_public",
     },
     cloudflare: { nodeCompat: true, deployConfig: true },
   },
