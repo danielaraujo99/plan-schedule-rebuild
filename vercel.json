@@ -4,6 +4,8 @@
   "installCommand": "bun install",
   "buildCommand": "bun run build:vercel",
   "outputDirectory": ".vercel/output",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -18,20 +20,10 @@
       ]
     },
     {
-      "source": "/__l5e/(.*)",
+      "source": "/(.*)\\.(png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|ttf|otf)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
-  ],
-  "images": {
-    "sizes": [320, 640, 768, 1024, 1280, 1536, 1920],
-    "formats": ["image/avif", "image/webp"],
-    "minimumCacheTTL": 31536000,
-    "remotePatterns": [
-      { "protocol": "https", "hostname": "**.lovable.app" },
-      { "protocol": "https", "hostname": "**.lovable.dev" },
-      { "protocol": "https", "hostname": "**.supabase.co" }
-    ]
-  }
+  ]
 }

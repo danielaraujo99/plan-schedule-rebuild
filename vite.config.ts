@@ -6,6 +6,7 @@ export default defineConfig({
   },
   nitro: {
     preset: "vercel",
+    compatibilityDate: "2026-06-17",
     output: {
       dir: ".vercel/output",
     },
