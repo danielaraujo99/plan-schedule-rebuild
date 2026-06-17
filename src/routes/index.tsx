@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import heroNails from "@/assets/hero-nails.jpg";
 import { GoldButton } from "@/components/booking/GoldButton";
+
+const heroNails = "/images/hero-nails.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

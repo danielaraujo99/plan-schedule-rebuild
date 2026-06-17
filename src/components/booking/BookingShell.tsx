@@ -1,7 +1,8 @@
 import { ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
 import { Logo } from "./Logo";
-import heroNails from "@/assets/hero-nails.jpg";
+
+const heroNails = "/images/hero-nails.jpg";
 
 type Props = {
   children: ReactNode;
