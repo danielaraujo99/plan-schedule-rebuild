@@ -59,16 +59,26 @@ function Agendamento() {
   const confirmar = () => {
     if (!service || !data || !horario) return;
     const linhas = [
-      "Olá! Gostaria de confirmar meu agendamento na Maison Élan Beauty:",
+      "✨ *MAISON ÉLAN BEAUTY*",
+      "_Nova solicitação de agendamento_",
       "",
-      `*Serviço:* ${service.nome}`,
-      `*Data:* ${dataBR}`,
-      `*Horário:* ${horario}`,
-      `*Valor:* ${formatPreco(service.preco)}`,
+      "━━━━━━━━━━━━━━━",
+      "💅 *Serviço*",
+      `   ${service.nome}`,
       "",
-      `*Nome:* ${nome}`,
-      `*WhatsApp:* ${whats}`,
-      insta ? `*Instagram:* ${insta}` : "",
+      "📅 *Data & Horário*",
+      `   ${dataBR} às ${horario}`,
+      "",
+      "💎 *Valor*",
+      `   ${formatPreco(service.preco)}`,
+      "━━━━━━━━━━━━━━━",
+      "",
+      "👤 *Cliente*",
+      `   ${nome}`,
+      `   📱 ${whats}`,
+      insta ? `   📷 ${insta}` : "",
+      "",
+      "_Aguardo a confirmação, por favor 💛_",
     ].filter(Boolean).join("\n");
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(linhas)}`;
     window.open(url, "_blank");
