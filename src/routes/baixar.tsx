@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
+import projetoZipDataUrl from "@/assets/projeto.zip?inline";
 
 export const Route = createFileRoute("/baixar")({
   head: () => ({
@@ -40,8 +41,6 @@ function BaixarPage() {
   const downloadZip = useCallback(async () => {
     try {
       setStatus("downloading");
-      const { default: projetoZipDataUrl } = await import("@/assets/projeto.zip?inline");
-      console.info("ZIP importado", projetoZipDataUrl.slice(0, 48), projetoZipDataUrl.length);
       const blob = dataUrlToBlob(projetoZipDataUrl);
       const objectUrl = URL.createObjectURL(blob);
       const a = document.createElement("a");
