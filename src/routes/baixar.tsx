@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+import projetoZipUrl from "@/assets/projeto.zip?url";
 
 export const Route = createFileRoute("/baixar")({
   head: () => ({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/baixar")({
   component: BaixarPage,
 });
 
-const FILE_URL = "/projeto.zip";
+const FILE_URL = projetoZipUrl;
 const FILE_NAME = "projeto.zip";
 
 function triggerDownload() {
