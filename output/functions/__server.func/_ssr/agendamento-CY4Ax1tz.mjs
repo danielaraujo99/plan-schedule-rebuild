@@ -1,9 +1,9 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
-import { t as GoldButton } from "./GoldButton-C9WoSJ5C.mjs";
+import { n as hero_nails_default, t as GoldButton } from "./GoldButton-CIj4nNzI.mjs";
 import { d as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Check, i as ChevronLeft, n as Clock, o as ArrowLeft, r as ChevronRight, t as Search } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/agendamento-BoQxtwn0.js
+//#region node_modules/.nitro/vite/services/ssr/assets/agendamento-CY4Ax1tz.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Logo({ className = "" }) {
@@ -25,7 +25,6 @@ function Logo({ className = "" }) {
 		]
 	});
 }
-var heroNails = "/images/hero-nails.jpg";
 function BookingShell({ children, onBack, showHeader = true }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-dvh w-full bg-background",
@@ -52,7 +51,7 @@ function BookingShell({ children, onBack, showHeader = true }) {
 					className: "relative overflow-hidden rounded-2xl border border-border bg-card",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: heroNails,
+							src: hero_nails_default,
 							alt: "Manicure delicada Maison Élan",
 							width: 960,
 							height: 1280,

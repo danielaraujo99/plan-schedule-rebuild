@@ -1,9 +1,8 @@
 import { r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
-import { t as GoldButton } from "./GoldButton-C9WoSJ5C.mjs";
+import { n as hero_nails_default, t as GoldButton } from "./GoldButton-CIj4nNzI.mjs";
 import { d as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CZq45F8A.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-D1LdyFvi.js
 var import_jsx_runtime = require_jsx_runtime();
-var heroNails = "/images/hero-nails.jpg";
 function Wordmark({ size = "sm" }) {
 	const isLg = size === "lg";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -51,7 +50,7 @@ function Index() {
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "mt-8 overflow-hidden rounded-2xl border border-border",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						src: heroNails,
+						src: hero_nails_default,
 						alt: "Manicure delicada feita no Maison Élan Beauty",
 						width: 900,
 						height: 1200,
@@ -146,7 +145,7 @@ function Index() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-								src: heroNails,
+								src: hero_nails_default,
 								alt: "Manicure delicada feita no Maison Élan Beauty",
 								width: 960,
 								height: 1280,
