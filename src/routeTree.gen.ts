@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as BaixarRouteImport } from './routes/baixar'
 import { Route as AgendamentoRouteImport } from './routes/agendamento'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiPublicBaixarRouteImport } from './routes/api/public/baixar'
 
 const BaixarRoute = BaixarRouteImport.update({
   id: '/baixar',
@@ -29,44 +28,35 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicBaixarRoute = ApiPublicBaixarRouteImport.update({
-  id: '/api/public/baixar',
-  path: '/api/public/baixar',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agendamento': typeof AgendamentoRoute
   '/baixar': typeof BaixarRoute
-  '/api/public/baixar': typeof ApiPublicBaixarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agendamento': typeof AgendamentoRoute
   '/baixar': typeof BaixarRoute
-  '/api/public/baixar': typeof ApiPublicBaixarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agendamento': typeof AgendamentoRoute
   '/baixar': typeof BaixarRoute
-  '/api/public/baixar': typeof ApiPublicBaixarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agendamento' | '/baixar' | '/api/public/baixar'
+  fullPaths: '/' | '/agendamento' | '/baixar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agendamento' | '/baixar' | '/api/public/baixar'
-  id: '__root__' | '/' | '/agendamento' | '/baixar' | '/api/public/baixar'
+  to: '/' | '/agendamento' | '/baixar'
+  id: '__root__' | '/' | '/agendamento' | '/baixar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgendamentoRoute: typeof AgendamentoRoute
   BaixarRoute: typeof BaixarRoute
-  ApiPublicBaixarRoute: typeof ApiPublicBaixarRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,13 +82,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/baixar': {
-      id: '/api/public/baixar'
-      path: '/api/public/baixar'
-      fullPath: '/api/public/baixar'
-      preLoaderRoute: typeof ApiPublicBaixarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -106,7 +89,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgendamentoRoute: AgendamentoRoute,
   BaixarRoute: BaixarRoute,
-  ApiPublicBaixarRoute: ApiPublicBaixarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
