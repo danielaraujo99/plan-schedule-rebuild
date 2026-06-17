@@ -12,13 +12,14 @@ export const Route = createFileRoute("/baixar")({
   component: BaixarPage,
 });
 
-const FILE_URL = "/projeto.zip";
+const FILE_URL = "/api/public/baixar";
 
 function BaixarPage() {
   useEffect(() => {
     const a = document.createElement("a");
     a.href = FILE_URL;
     a.download = "projeto.zip";
+    a.rel = "noopener";
     document.body.appendChild(a);
     a.click();
     a.remove();
