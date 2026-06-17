@@ -41,47 +41,43 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.875rem;
 
-  --background: oklch(0.13 0.012 60);
-  --foreground: oklch(0.95 0.012 80);
+  /* Premium dark — quase preto carvão, sem azul */
+  --background: oklch(0.14 0.006 60);
+  --foreground: oklch(0.94 0.008 80);
 
-  --card: oklch(0.165 0.014 60);
-  --card-foreground: oklch(0.95 0.012 80);
+  --card: oklch(0.17 0.007 60);
+  --card-foreground: oklch(0.94 0.008 80);
 
-  --popover: oklch(0.165 0.014 60);
-  --popover-foreground: oklch(0.95 0.012 80);
+  --popover: oklch(0.17 0.007 60);
+  --popover-foreground: oklch(0.94 0.008 80);
 
-  --primary: oklch(0.74 0.13 75);
-  --primary-foreground: oklch(0.16 0.02 60);
+  /* Dourado sóbrio, fosco — sem brilho neon */
+  --primary: oklch(0.72 0.085 78);
+  --primary-foreground: oklch(0.16 0.01 60);
 
-  --secondary: oklch(0.2 0.015 65);
-  --secondary-foreground: oklch(0.95 0.012 80);
+  --secondary: oklch(0.21 0.008 65);
+  --secondary-foreground: oklch(0.94 0.008 80);
 
-  --muted: oklch(0.2 0.015 65);
-  --muted-foreground: oklch(0.68 0.025 75);
+  --muted: oklch(0.21 0.008 65);
+  --muted-foreground: oklch(0.65 0.012 75);
 
-  --accent: oklch(0.22 0.02 70);
-  --accent-foreground: oklch(0.95 0.012 80);
+  --accent: oklch(0.22 0.01 70);
+  --accent-foreground: oklch(0.94 0.008 80);
 
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.98 0.01 80);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.98 0.008 80);
 
-  --border: oklch(0.24 0.018 70);
-  --input: oklch(0.22 0.015 65);
-  --ring: oklch(0.74 0.13 75);
+  --border: oklch(0.26 0.008 70);
+  --input: oklch(0.21 0.008 65);
+  --ring: oklch(0.72 0.085 78);
 
-  --gold: oklch(0.78 0.13 78);
-  --gold-soft: oklch(0.85 0.1 82);
-  --gold-deep: oklch(0.62 0.12 70);
+  --gold: oklch(0.74 0.085 80);
+  --gold-soft: oklch(0.82 0.06 82);
+  --gold-deep: oklch(0.58 0.075 72);
 
-  --gradient-gold: linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--gold-deep));
-  --shadow-gold: 0 10px 40px -12px color-mix(in oklab, var(--gold) 35%, transparent);
-  --shadow-card: 0 30px 80px -30px oklch(0 0 0 / 0.6);
-}
-
-.dark {
-  /* App is dark by default — keep parity */
+  --shadow-card: 0 24px 60px -28px oklch(0 0 0 / 0.45);
 }
 
 @layer base {
@@ -94,20 +90,37 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   .font-display {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
-}
-
-@utility gold-gradient {
-  background-image: var(--gradient-gold);
-  color: var(--primary-foreground);
 }
 
 @utility text-gold {
   color: var(--gold);
+}
+
+@utility bg-gold {
+  background-color: var(--gold);
+  color: var(--primary-foreground);
+}
+
+@utility input-field {
+  height: 48px;
+  width: 100%;
+  border-radius: 12px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  padding: 0 14px;
+  font-size: 14px;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color .15s;
+}
+@utility input-field-focus {
+  border-color: var(--gold);
 }
