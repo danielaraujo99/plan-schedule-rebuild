@@ -5,15 +5,12 @@ export default defineConfig({
     server: { entry: "server" },
   },
   nitro: {
-    preset: "static",
-    prerender: {
-      crawlLinks: true,
-      routes: ["/", "/agendamento", "/baixar"],
-      failOnError: false,
-    },
+    preset: "cloudflare-module",
     output: {
       dir: "dist",
       publicDir: "dist",
+      serverDir: "dist/_server",
     },
+    cloudflare: { nodeCompat: true, deployConfig: true },
   },
 });
