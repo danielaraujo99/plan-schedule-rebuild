@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as BaixarRouteImport } from './routes/baixar'
 import { Route as AgendamentoRouteImport } from './routes/agendamento'
 import { Route as IndexRouteImport } from './routes/index'
 
+const BaixarRoute = BaixarRouteImport.update({
+  id: '/baixar',
+  path: '/baixar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AgendamentoRoute = AgendamentoRouteImport.update({
   id: '/agendamento',
   path: '/agendamento',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agendamento': typeof AgendamentoRoute
+  '/baixar': typeof BaixarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agendamento': typeof AgendamentoRoute
+  '/baixar': typeof BaixarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agendamento': typeof AgendamentoRoute
+  '/baixar': typeof BaixarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agendamento'
+  fullPaths: '/' | '/agendamento' | '/baixar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agendamento'
-  id: '__root__' | '/' | '/agendamento'
+  to: '/' | '/agendamento' | '/baixar'
+  id: '__root__' | '/' | '/agendamento' | '/baixar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgendamentoRoute: typeof AgendamentoRoute
+  BaixarRoute: typeof BaixarRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/baixar': {
+      id: '/baixar'
+      path: '/baixar'
+      fullPath: '/baixar'
+      preLoaderRoute: typeof BaixarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agendamento': {
       id: '/agendamento'
       path: '/agendamento'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgendamentoRoute: AgendamentoRoute,
+  BaixarRoute: BaixarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
