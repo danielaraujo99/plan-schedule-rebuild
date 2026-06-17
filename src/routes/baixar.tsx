@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
-import projetoZipDataUrl from "@/assets/projeto.zip?inline";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/baixar")({
   head: () => ({
@@ -13,55 +12,24 @@ export const Route = createFileRoute("/baixar")({
   component: BaixarPage,
 });
 
+const FILE_URL = "/projeto.zip";
 const FILE_NAME = "projeto.zip";
 
-function dataUrlToBlob(dataUrl: string) {
-  const commaIndex = dataUrl.indexOf(",");
-  if (commaIndex === -1) throw new Error("ZIP inválido");
-
-  const meta = dataUrl.slice(0, commaIndex);
-  const payload = dataUrl.slice(commaIndex + 1);
-  const mime = meta.match(/^data:([^;,]+)/)?.[1] ?? "application/zip";
-
-  if (!meta.includes(";base64")) {
-    return new Blob([decodeURIComponent(payload)], { type: mime });
-  }
-
-  const binary = atob(payload);
-  const bytes = new Uint8Array(binary.length);
-  for (let index = 0; index < binary.length; index += 1) {
-    bytes[index] = binary.charCodeAt(index);
-  }
-  return new Blob([bytes], { type: mime });
+function triggerDownload() {
+  const a = document.createElement("a");
+  a.href = FILE_URL;
+  a.download = FILE_NAME;
+  a.rel = "noopener";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
 }
 
 function BaixarPage() {
-  const [status, setStatus] = useState<"idle" | "downloading" | "ready" | "error">("idle");
-
-  const downloadZip = useCallback(async () => {
-    try {
-      setStatus("downloading");
-      const blob = dataUrlToBlob(projetoZipDataUrl);
-      const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = objectUrl;
-      a.download = FILE_NAME;
-      a.rel = "noopener";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
-      setStatus("ready");
-    } catch (error) {
-      console.error("Falha ao baixar o ZIP", error);
-      setStatus("error");
-    }
-  }, []);
-
   useEffect(() => {
-    const timer = window.setTimeout(downloadZip, 300);
-    return () => window.clearTimeout(timer);
-  }, [downloadZip]);
+    const t = window.setTimeout(triggerDownload, 300);
+    return () => window.clearTimeout(t);
+  }, []);
 
   return (
     <main className="min-h-screen flex items-center justify-center p-6 bg-background text-foreground">
@@ -70,17 +38,14 @@ function BaixarPage() {
         <p className="text-sm text-muted-foreground">
           O download deve iniciar automaticamente. Caso não inicie, clique no botão abaixo.
         </p>
-        {status === "error" && (
-          <p className="text-sm text-destructive">Não foi possível iniciar automaticamente. Clique novamente.</p>
-        )}
-        <button
-          type="button"
-          onClick={downloadZip}
-          disabled={status === "downloading"}
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-wait disabled:opacity-70"
+        <a
+          href={FILE_URL}
+          download={FILE_NAME}
+          rel="noopener"
+          className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition hover:opacity-90"
         >
-          {status === "downloading" ? "Preparando ZIP..." : "Baixar projeto.zip"}
-        </button>
+          Baixar projeto.zip
+        </a>
       </div>
     </main>
   );

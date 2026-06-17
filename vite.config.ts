@@ -1,16 +1,14 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  vite: {
-    assetsInclude: ["**/*.zip"],
-  },
   tanstackStart: {
     server: { entry: "server" },
   },
   nitro: {
-    preset: "vercel",
+    preset: "static",
     output: {
-      dir: ".vercel/output",
+      dir: "dist",
+      publicDir: "dist",
     },
   },
 });
