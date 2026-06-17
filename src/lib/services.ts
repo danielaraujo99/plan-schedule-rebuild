@@ -29,5 +29,5 @@ export const formatDuracao = (min: number) => {
   return `${m}m`;
 };
 
-// Número do WhatsApp da loja. Substitua pelo número real (formato internacional, só dígitos).
-export const WHATSAPP_NUMBER = "5500000000000";
+// Número do WhatsApp da loja (formato internacional, só dígitos).
+export const WHATSAPP_NUMBER = "5527981359051";
