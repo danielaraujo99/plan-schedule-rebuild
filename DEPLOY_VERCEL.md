@@ -1,21 +1,27 @@
 # Deploy na Vercel
 
-Este projeto é TanStack Start (SSR) e suporta deploy direto na Vercel via Nitro preset `vercel` (Build Output API v3).
+Este projeto é TanStack Start (SSR) com Nitro `vercel` e saída no formato Build Output API v3.
 
-## Como funciona
+## Configuração correta
 
-O `vite.config.ts` define `nitro: { preset: "vercel", output: { dir: ".vercel/output" } }`, e o `vercel.json` aponta `outputDirectory` para `.vercel/output`. Assim a Vercel encontra exatamente o diretório gerado pelo build.
+- Framework Preset: `TanStack Start`
+- Install Command: `bun install`
+- Build Command: `bun run build:vercel`
+- Output Directory: `.vercel/output`
+
+O script `build:vercel` remove variáveis do sandbox, força o preset Vercel, gera `.vercel/output` e também copia a mesma saída para `output` como fallback caso o painel da Vercel ainda esteja com configuração antiga salva.
+
+## Imagens
+
+As imagens usadas pela interface ficam como arquivos locais em `src/assets`, entram no bundle do Vite e são publicadas em `.vercel/output/static/assets` com hash e cache longo. O deploy não depende de URLs internas do preview para carregar imagens.
 
 ## Passo a passo
 
 1. Importe o repositório em https://vercel.com/new
-2. O `vercel.json` define o preset `tanstack-start`, o comando `bun run build:vercel` e o Output Directory `.vercel/output`.
-3. Se a Vercel tiver configuração antiga salva no painel, deixe o Output Directory como `.vercel/output`.
-4. Configure as variáveis de ambiente que o app usa em **Settings → Environment Variables**.
-5. Deploy.
-
-## Observações
-
-- O wrapper SSR (`src/server.ts`) e o tratamento de erros continuam funcionando — o preset `vercel` do Nitro empacota o mesmo handler para Vercel Functions.
-- Não é preciso `wrangler` na Vercel; aquele fluxo é só para Cloudflare.
-- Roteamento SPA/SSR funciona sem `rewrites` adicionais: o Build Output API gera as rotas certas.
+2. Confirme em **Project Settings → General**:
+   - Framework Preset: `TanStack Start`
+   - Build Command: `bun run build:vercel`
+   - Output Directory: `.vercel/output`
+3. Se o painel estiver preso em `output`, o build também gera essa pasta como compatibilidade.
+4. Configure variáveis de ambiente em **Settings → Environment Variables**, se houver.
+5. Faça um novo deploy limpo.
