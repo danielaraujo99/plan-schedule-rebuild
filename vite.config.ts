@@ -6,6 +6,11 @@ export default defineConfig({
   },
   nitro: {
     preset: "static",
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/agendamento", "/baixar"],
+      failOnError: false,
+    },
     output: {
       dir: "dist",
       publicDir: "dist",
