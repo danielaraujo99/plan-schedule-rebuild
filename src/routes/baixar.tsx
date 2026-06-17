@@ -41,6 +41,7 @@ function BaixarPage() {
     try {
       setStatus("downloading");
       const { default: projetoZipDataUrl } = await import("@/assets/projeto.zip?inline");
+      console.info("ZIP importado", projetoZipDataUrl.slice(0, 48), projetoZipDataUrl.length);
       const blob = dataUrlToBlob(projetoZipDataUrl);
       const objectUrl = URL.createObjectURL(blob);
       const a = document.createElement("a");
