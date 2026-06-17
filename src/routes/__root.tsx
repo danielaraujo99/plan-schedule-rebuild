@@ -86,8 +86,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Maison Élan Beauty — Agendamento" },
       { name: "twitter:description", content: "Agende sua experiência de beleza no Maison Élan Beauty." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/afd02896-f540-444b-8c72-d0dc2511d745/id-preview-f0200654--de79e40b-9521-44e6-8d72-ae21066b5422.lovable.app-1781703716768.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/afd02896-f540-444b-8c72-d0dc2511d745/id-preview-f0200654--de79e40b-9521-44e6-8d72-ae21066b5422.lovable.app-1781703716768.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/db718c85-dc47-46fe-a257-16bc1689a2ad" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/db718c85-dc47-46fe-a257-16bc1689a2ad" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
