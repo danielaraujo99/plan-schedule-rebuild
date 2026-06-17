@@ -7,17 +7,18 @@ type Props = {
 
 export function TimeSlotGrid({ value, onChange }: Props) {
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-3 gap-2.5">
       {SLOTS.map((s) => {
         const selected = value === s;
         return (
           <button
             key={s}
+            type="button"
             onClick={() => onChange(s)}
-            className={`flex h-14 items-center justify-center rounded-2xl border text-[15px] font-medium transition ${
+            className={`flex h-12 items-center justify-center rounded-xl border text-[14px] font-medium transition ${
               selected
-                ? "border-transparent gold-gradient shadow-[var(--shadow-gold)]"
-                : "border-border bg-card text-foreground hover:border-gold"
+                ? "border-gold bg-gold"
+                : "border-border bg-card text-foreground hover:border-gold/60"
             }`}
           >
             {s}
